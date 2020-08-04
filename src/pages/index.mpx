@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <list></list>
+  </div>
+  
+</template>
+
+<script>
+  import { createPage } from '@mpxjs/core'
+
+  createPage({
+    onLoad () {
+    },
+    onResize (res) {
+      // console.log('testtest')
+      // console.log(res)
+      // console.log('testtest')
+    },
+    onItemTap (index, item) {
+
+    },
+    onTabItemTap (item) {
+      console.log(item.index)
+      console.log(item.pagePath)
+      console.log(item.text)
+    },
+    onReachBottom () {}
+  })
+</script>
+
+<script type="application/json">
+  {
+    "usingComponents": {
+      "list": "../components/list"
+    }
+  }
+</script>
