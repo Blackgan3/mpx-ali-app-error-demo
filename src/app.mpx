@@ -6,6 +6,7 @@
   // app.js
   createApp({
     onLaunch () {
+
     }
   })
 </script>
@@ -20,12 +21,14 @@
       "./pages/index",
       "./pages/test1",
       "./pages/test2",
-      "./pages/test3"
+      "./pages/test3",
+      "./pages/demo"
     ],
     "tabBar": {
+      "custom": true,
       "color": "#fff",
-      "selectedColor": "red",
-      "backgroundColor": "black",
+      "selectedColor": "#F00",
+      "backgroundColor": "#000",
       "list": [
         {
           "pagePath": "pages/test1",
@@ -43,14 +46,3 @@
     }
   }
 </script>
-
-<!--也可以通过以下形式用js输出json，便于书写注释和使用条件编译-->
-
-<!--<script name="json">-->
-<!--  // 可以写注释，通过defs注入的常量做一些判断之类的操作-->
-<!--  module.exports = {-->
-<!--    pages: [-->
-<!--      './pages/index'-->
-<!--    ]-->
-<!--  }-->
-<!--</script>-->

@@ -1,0 +1,50 @@
+<template>
+  <div>
+    <div>
+      自定义 tabBar 组件
+    </div>
+  </div>
+</template>
+
+<script>
+import mpx, { createPage } from '@mpxjs/core'
+
+createPage({
+  onLoad () {
+    console.log('page demo onload')
+  },
+  onShow () {
+    console.log('page demo onshow')
+  },
+  onUnload () {
+    console.log('page demo  onUnLoad')
+  },
+  onHide () {
+    console.log('page demo onHide')
+  },
+  methods: {
+    btnclick () {
+      mpx.navigateTo({
+        url: '/pages/index'
+      })
+    },
+    btnclickDemo () {
+      mpx.switchTab({
+        url: '/pages/test1'
+      })
+    },
+    btnclickDemo1 () {
+      mpx.navigateTo({
+        url: '/pages/index'
+      })
+    }
+  }
+})
+</script>
+
+<script type="application/json">
+{
+  "usingComponents": {
+  }
+}
+</script>

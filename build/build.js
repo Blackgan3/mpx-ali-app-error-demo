@@ -42,7 +42,9 @@ const transWebModuleRules = [
           transformToRequire: {
             'mpx-image': 'src',
             'mpx-audio': 'src',
-            'mpx-video': 'src'
+            'mpx-video': 'src',
+            'mpx-tabbar': 'src',
+            'mpx-tabbar-container': 'src'
           }
         }
       },
@@ -90,16 +92,16 @@ modeArr.forEach(item => {
       srcMode: userSelectedMode
     }, mpxWebpackPluginConfig)),
     new MpxVersionComparePlugin({
-      type: 'compare',
+      type: 'collect',
       collectDuplicateVersion: true,
       config: {
         filePath: path.resolve(__dirname)+'/'+'compare.json',
         callback: function (result) { // result为{duplicateResult}
-          setTimeout(() => {
-            console.log(result)
-          },2000)
+          // setTimeout(() => {
+          //   console.log(result)
+          // },2000)
           const {duplicateResult} = result
-          console.log(duplicateResult)
+          // console.log(duplicateResult)
           // 对有多个版本的包做提示/处理
         }
       }

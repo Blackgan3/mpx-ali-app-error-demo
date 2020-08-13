@@ -38,7 +38,7 @@ module.exports = {
       include: resolve('src')
     },
   ],
-
+  forceDisableInject: true
 
   // 多语言i18n能力 以下是简单示例，更多详情请参考文档：https://didi.github.io/mpx/i18n.html
   // i18n: {

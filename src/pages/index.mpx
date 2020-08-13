@@ -1,30 +1,63 @@
 <template>
   <div>
     <list></list>
+    <canvas type="2d" id="canvas" style="width:100px;height:100px"></canvas>
+    <img src="../../static/imgs/test1.png" alt="test">
+    <image src="../../static/imgs/test1.png"></image>
+    <div>
+      <button bindtap="clickBtn">点击跳转 tab 页面</button>
+      <button bindtap="clickBtnDemo">点击跳转 demo 页面</button>
+    </div>
   </div>
-  
+
 </template>
 
 <script>
-  import { createPage } from '@mpxjs/core'
+  import mpx, { createPage } from '@mpxjs/core'
 
   createPage({
     onLoad () {
-    },
-    onResize (res) {
-      // console.log('testtest')
-      // console.log(res)
-      // console.log('testtest')
-    },
-    onItemTap (index, item) {
+      // mpx.switchTab({ url: '/pages/test1' })
+      // console.log('page/index onload')
 
     },
-    onTabItemTap (item) {
-      console.log(item.index)
-      console.log(item.pagePath)
-      console.log(item.text)
+    onShow () {
+      console.log('page/index onshow')
     },
-    onReachBottom () {}
+    onUnload () {
+      console.log('page/index onUnLoad')
+    },
+    onHide () {
+      console.log('page/index onHide')
+    },
+    methods: {
+      clickBtn () {
+        console.log('clickBtn')
+        console.log(mpx.switchTab)
+        mpx.switchTab({
+          url: '/pages/test1'
+        })
+      },
+      clickBtnDemo () {
+        mpx.navigateTo({
+          url: '/pages/demo'
+        })
+      }
+    }
+    // onResize (res) {
+    //   // console.log('testtest')
+    //   // console.log(res)
+    //   // console.log('testtest')
+    // },
+    // onItemTap (index, item) {
+
+    // },
+    // onTabItemTap (item) {
+    //   console.log(item.index)
+    //   console.log(item.pagePath)
+    //   console.log(item.text)
+    // },
+    // onReachBottom () {}
   })
 </script>
 

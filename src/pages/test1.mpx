@@ -1,14 +1,44 @@
 <template>
   <div>
-    test1
+    <div>
+      test1
+    </div>
+    <div>
+      <button bindtap="btnclick">跳转到page index</button>
+      <button bindtap="btnclickDemo">跳转到page demo</button>
+    </div>
   </div>
-  
+
 </template>
 
 <script>
-  import { createPage } from '@mpxjs/core'
+  import mpx, { createPage } from '@mpxjs/core'
 
   createPage({
+    onLoad () {
+      console.log('page/test1 onload')
+    },
+    onShow () {
+      console.log('page/test1 onshow')
+    },
+    onUnload () {
+      console.log('page/test1 onunload')
+    },
+    onHide () {
+      console.log('page/test1 onhide')
+    },
+    methods: {
+      btnclick () {
+        mpx.navigateTo({
+          url: '/pages/index'
+        })
+      },
+      btnclickDemo () {
+        mpx.navigateTo({
+          url: '/pages/demo'
+        })
+      }
+    }
   })
 </script>
 

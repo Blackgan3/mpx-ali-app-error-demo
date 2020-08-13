@@ -43,7 +43,7 @@ const webpackConf = {
       {
         test: /\.(png|jpe?g|gif|svg)$/,
         loader: MpxWebpackPlugin.urlLoader({
-          name: 'img/[name][hash].[ext]'
+          name: 'imgs/[name][hash].[ext]'
         })
       }
     ]
@@ -54,8 +54,12 @@ const webpackConf = {
   mode: 'none',
   resolve: {
     extensions: ['.mpx', '.js', '.wxml', '.vue'],
-    modules: ['node_modules']
-  }
+    modules: ['node_modules'],
+    alias: {
+      'src': resolve('src')
+    }
+  },
+  devtool: 'source-map'
 }
 
 module.exports = webpackConf
