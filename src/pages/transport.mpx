@@ -36,45 +36,12 @@ createComponent({
 
   watch: {
     options () {
-      this._initParams()
-      if (this.localTimer) {
-        clearTimeout(this.localTimer)
-      }
+      console.log('options change')
       this._updateDrivers()
+      this._startTimer()
     }
   },
   methods: {
-    _initParams () {
-      console.log('initParams')
-      // const options = this.options || {}
-      // const productId = this.options && this.options.product_id ? this.options.product_id : 260
-      //
-      // this.params = {
-      //   product_id: productId || 260,
-      //   lat: options.latitude,
-      //   lng: options.longitude,
-      //   role: 1,
-      //   radius: 5000,
-      //   phone_num: options.phoneNum,
-      //   type: options.modelType || '',
-      //   tamp: Math.floor(Date.now() / 1000),
-      //   order_stat: 1,
-      //   extra: {'tlat': '' + options.latitude, 'tlng': '' + options.longitude, 'carpooling': '1'},
-      //   sdkmaptype: 'soso',
-      //   src: 'map-mp-sdk',
-      //   token: options.token || '',
-      //   coord_type: 2,
-      //   width: options.width,
-      //   height: options.height,
-      //   car_level: CAR_TYPE_PRODUCT[productId],
-      //   lang: this.$i18n.locale || 'zh-CN'
-      // }
-      //
-      // // 同时呼叫必须
-      // // if (productId == 372) {
-      // //   this.params = Object.assign({multi_product: {"combo_type":0,"product_id":26,"require_level": 0, "business_id": 372}}, this.params)
-      // // }
-    },
     async _updateDrivers () {
       console.log('_updateDrivers callee')
 
@@ -89,7 +56,6 @@ createComponent({
           }
           return option
         })
-        this._startTimer()
       } catch (error) {
         this.triggerEvent('error', error)
         console.error(error)
@@ -97,7 +63,7 @@ createComponent({
     },
     _startTimer () {
       this.isStopTimer = false
-      this.localTimer = setTimeout(() => {
+      this.localTimer = setInterval(() => {
         if (!this.isStopTimer) {
           this._updateDrivers()
         }
