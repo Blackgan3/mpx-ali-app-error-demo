@@ -18,31 +18,7 @@
 <script type="application/json">
   {
     "pages": [
-      "./pages/index",
-      "./pages/test1",
-      "./pages/test2",
-      "./pages/test3",
-      "./pages/demo"
-    ],
-    "tabBar": {
-      "custom": true,
-      "color": "#fff",
-      "selectedColor": "#F00",
-      "backgroundColor": "#000",
-      "list": [
-        {
-          "pagePath": "pages/test1",
-          "text": "tab1"
-        },
-        {
-          "pagePath": "pages/test2",
-          "text": "tab2"
-        },
-        {
-          "pagePath": "pages/test3",
-          "text": "tab3"
-        }
-      ]
-    }
+      "./pages/example"
+    ]
   }
 </script>

@@ -1,0 +1,92 @@
+<template>
+  <view>
+    <view class="logoWrapper">
+      logoWrapper
+    </view>
+    <view class="slogan">Welcom to your Mpx MiniProgram</view>
+
+    <view>
+      <transport
+        options="{{ transportOptions }}"
+      >
+      </transport>
+    </view>
+  </view>
+
+</template>
+
+<script>
+import mpx, { createPage } from '@mpxjs/core'
+
+createPage({
+  data: {
+    transportOptions: {
+      product_id: 123,
+      latitude: '11.11',
+      longitude: '22.22',
+      phoneNum: '',
+      token: '',
+      width: 20,
+      height: 30
+    }
+  },
+  onLoad () {
+    // mpx.switchTab({ url: '/pages/test1' })
+    // console.log('page/index onload')
+    setTimeout(() => {
+      this.transportOptions = {
+        product_id: 123,
+        latitude: '',
+        longitude: '',
+        phoneNum: '',
+        token: '',
+        width: 20,
+        height: 30
+      }
+    }, 5000)
+  },
+  onShow () {
+    console.log('pages/example onshow')
+  },
+  onUnload () {
+    console.log('pages/example onUnLoad')
+  },
+  onHide () {
+    console.log('pages/example onHide')
+  },
+  methods: {
+    clickBtn () {
+
+    },
+    clickBtnDemo () {
+      mpx.navigateTo({
+        url: '/pages/demo'
+      })
+    }
+  }
+})
+</script>
+
+<style lang="stylus">
+.logoWrapper
+  width 100%
+  text-align center
+  .logo
+    width 80%
+    margin 20px auto
+    margin-bottom 10px
+.slogan
+  width 100%
+  font-size 20px
+  text-align center
+  margin 20 0
+  line-height 32px
+</style>
+
+<script type="application/json">
+{
+  "usingComponents": {
+    "transport": "./transport"
+  }
+}
+</script>

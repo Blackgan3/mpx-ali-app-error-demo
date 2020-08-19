@@ -1,0 +1,118 @@
+<template>
+  <view>
+    transport.mpx page
+  </view>
+  <view>{{JSON.stringify(options)}}</view>
+</template>
+
+<script lang="js">
+import { createComponent } from '@mpxjs/core'
+
+createComponent({
+  properties: {
+    options: { // 运力服务参数
+      type: Object,
+      value: null
+    }
+  },
+
+  attached () {
+    this._stopped = false
+    this._initParams()
+    this._updateDrivers()
+  },
+
+  detached () {
+    this._stopTimer()
+  },
+
+  data: {
+    drivers: [], // 司机的car的对象数组
+    params: null,
+    etaStr: '',
+    localTimer: null,
+    interval: 5000
+  },
+
+  watch: {
+    options () {
+      this._initParams()
+      if (this.localTimer) {
+        clearTimeout(this.localTimer)
+      }
+      this._updateDrivers()
+    }
+  },
+  methods: {
+    _initParams () {
+      console.log('initParams')
+      // const options = this.options || {}
+      // const productId = this.options && this.options.product_id ? this.options.product_id : 260
+      //
+      // this.params = {
+      //   product_id: productId || 260,
+      //   lat: options.latitude,
+      //   lng: options.longitude,
+      //   role: 1,
+      //   radius: 5000,
+      //   phone_num: options.phoneNum,
+      //   type: options.modelType || '',
+      //   tamp: Math.floor(Date.now() / 1000),
+      //   order_stat: 1,
+      //   extra: {'tlat': '' + options.latitude, 'tlng': '' + options.longitude, 'carpooling': '1'},
+      //   sdkmaptype: 'soso',
+      //   src: 'map-mp-sdk',
+      //   token: options.token || '',
+      //   coord_type: 2,
+      //   width: options.width,
+      //   height: options.height,
+      //   car_level: CAR_TYPE_PRODUCT[productId],
+      //   lang: this.$i18n.locale || 'zh-CN'
+      // }
+      //
+      // // 同时呼叫必须
+      // // if (productId == 372) {
+      // //   this.params = Object.assign({multi_product: {"combo_type":0,"product_id":26,"require_level": 0, "business_id": 372}}, this.params)
+      // // }
+    },
+    async _updateDrivers () {
+      console.log('_updateDrivers callee')
+
+      try {
+        const loc = [{ car_level: 600 }, { car_level: 600 }]
+        this.drivers = loc.map((driver) => {
+          const option = {
+            position: {
+              latitude: 0,
+              longitude: 0
+            }
+          }
+          return option
+        })
+        this._startTimer()
+      } catch (error) {
+        this.triggerEvent('error', error)
+        console.error(error)
+      }
+    },
+    _startTimer () {
+      this.isStopTimer = false
+      this.localTimer = setTimeout(() => {
+        if (!this.isStopTimer) {
+          this._updateDrivers()
+        }
+      }, this.interval)
+    }
+  }
+})
+</script>
+
+<style></style>
+
+<script lang="json" type="application/json">
+{
+  "component": true,
+  "usingComponents": {
+  }
+}
+</script>

@@ -57,7 +57,7 @@ const webpackConf = {
     modules: ['node_modules'],
     alias: {
       'src': resolve('src')
-    }
+    },
   },
   devtool: 'source-map'
 }

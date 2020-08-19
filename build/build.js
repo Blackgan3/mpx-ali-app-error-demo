@@ -42,9 +42,7 @@ const transWebModuleRules = [
           transformToRequire: {
             'mpx-image': 'src',
             'mpx-audio': 'src',
-            'mpx-video': 'src',
-            'mpx-tabbar': 'src',
-            'mpx-tabbar-container': 'src'
+            'mpx-video': 'src'
           }
         }
       },
